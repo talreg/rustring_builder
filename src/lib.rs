@@ -1,17 +1,7 @@
+use std::fmt::Display;
 use std::ops::{Add, AddAssign};
 
-///
-/// ## String Builder - reusable char buffer
-/// * The StringBuilder object allows you to add any object (including custom types)
-/// as long as they implement the ToString trait.
-/// * StringBuilder doesn't consume the object appended
-/// * StringBuilder is not consumed by calling the to_string() method.
-/// * StringBuilder can be appended to another StringBuilder.
-/// ## Consuming methods:
-/// * Operators, such as + or += will consume the respective value.
-/// * Iterator will also consume the value
-/// * Direct access (nth) will **not** consume the value.
-
+#[doc = include_str!("../readmes/stringbuilder.md")]
 pub struct StringBuilder {
     data: Vec<char>,
     iterator_ptr: usize,
@@ -71,15 +61,15 @@ impl StringBuilder {
     }
 }
 
-// impl Display for StringBuilder {
-//     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-//         let mut output: String = String::new();
-//         for ch in &self.data {
-//             output.push(*ch);
-//         }
-//         write!(f, "{}", output)
-//     }
-// }
+impl Display for StringBuilder {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut output: String = String::new();
+        for ch in &self.data {
+            output.push(*ch);
+        }
+        write!(f, "{}", output)
+    }
+}
 
 impl PartialEq for StringBuilder {
     fn eq(&self, other: &Self) -> bool {
@@ -96,16 +86,6 @@ impl PartialEq for StringBuilder {
 impl Default for StringBuilder {
     fn default() -> Self {
         StringBuilder::new()
-    }
-}
-
-impl ToString for StringBuilder {
-    fn to_string(&self) -> String {
-        let mut output: String = String::new();
-        for ch in &self.data {
-            output.push(*ch);
-        }
-        output
     }
 }
 
