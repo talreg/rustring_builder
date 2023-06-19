@@ -2,6 +2,6 @@
 name = "rustring_builder"
 version = "0.1.0"
 edition = "2021"
-authors = "Tal Riginiano"
+authors = ["Tal Riginiano"]
 license = "MIT"
 [dependencies]
