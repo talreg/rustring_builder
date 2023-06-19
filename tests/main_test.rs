@@ -70,3 +70,13 @@ fn test_ntn(){
     sample.append("hello world");
     assert_eq!('o',sample.nth(4).unwrap());
 }
+
+#[test]
+fn test_clone(){
+    let mut sample=StringBuilder::new();
+    sample.append("hello world");
+    let mut sample2=sample.clone();
+    sample2.append(" goodbye world");
+    assert_eq!("hello world",sample.to_string());
+    assert_eq!("hello world goodbye world",sample2.to_string());
+}
