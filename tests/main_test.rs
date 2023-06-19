@@ -53,11 +53,20 @@ fn test_bad_ntn_access(){
     assert_eq!(None,sample.nth(11));
 }
 
+
 #[test]
-fn test_appending_different_types(){
+fn test_add_another_string_builder(){
     let mut sample=StringBuilder::new();
     sample.append("hello world");
-    sample.append(123);
-    sample.append(123.456);
-    assert_eq!("hello world123123.456",sample.to_string());
+    let mut sample2=StringBuilder::new();
+    sample2.append(" goodbye world");
+    sample+=sample2;
+    assert_eq!("hello world goodbye world",sample.to_string());
+}
+
+#[test]
+fn test_ntn(){
+    let mut sample=StringBuilder::new();
+    sample.append("hello world");
+    assert_eq!('o',sample.nth(4).unwrap());
 }

@@ -5,5 +5,5 @@ edition = "2021"
 authors = ["Tal Riginiano"]
 license = "MIT"
 description = "A Rust string builder"
-keywords = ["stringbuilder", "string", "builder"]
+keywords = ["stringbuilder", "string", "builder","sql"]
 [dependencies]
