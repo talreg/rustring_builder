@@ -27,6 +27,8 @@ fn main(){
         .append(" world")
         .append("!");
     println!("{}",sample2.to_string()); // goodbye world!
+    sample2.push('!').push('!').push('!');
+    println!("{}",sample2.to_string()); // goodbye world!!!!
 
 
 }
