@@ -8,6 +8,12 @@ pub struct StringBuilder {
 }
 
 impl StringBuilder {
+    pub fn new_line(&mut self) {
+        self.append("\n");
+    }
+}
+
+impl StringBuilder {
     pub fn new() -> Self {
         StringBuilder { data: Vec::new(), iterator_ptr: 0 }
     }
@@ -29,7 +35,7 @@ impl StringBuilder {
     }
     /// adds a newline character and then the value
     pub fn append_line<T: ToString>(&mut self, what: T) {
-        self.append("\n");
+        self.new_line();
         self.append(what);
     }
 
