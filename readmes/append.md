@@ -1,7 +1,7 @@
 Appending any object that implements the `ToString` trait
 ---------------------------------------------------------
 ```rust
-use string_builder::StringBuilder;
+use rustring_builder::StringBuilder;
 fn try_appending(){
     let mut sb = StringBuilder::new();
     sb.append("Hello, ");

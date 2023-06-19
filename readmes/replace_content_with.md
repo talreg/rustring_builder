@@ -1,7 +1,7 @@
 Replace the content with the content of another object that implements the `ToString` trait
 ---------------------------------------------------------
 ```rust
-use string_builder::StringBuilder;
+use rustring_builder::StringBuilder;
 fn test_replace_with(){
     let mut sb = StringBuilder::new();
     sb.append("Hello, ");

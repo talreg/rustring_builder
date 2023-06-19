@@ -1,7 +1,7 @@
 use std::fmt::Display;
 use std::ops::{Add, AddAssign};
 
-#[doc = include_str!("../readmes/stringbuilder.md")]
+#[doc = include_str!("../readmes/rustring_builder.md")]
 pub struct StringBuilder {
     data: Vec<char>,
     iterator_ptr: usize,
@@ -23,10 +23,11 @@ impl StringBuilder {
         sb
     }
     #[doc = include_str!("../readmes/append.md")]
-    pub fn append<T: ToString>(&mut self, what: T) {
+    pub fn append<T: ToString>(&mut self, what: T) -> &mut Self {
         for ch in what.to_string().chars() {
             self.data.push(ch)
         }
+        self
     }
     #[doc = include_str!("../readmes/replace_content_with.md")]
     pub fn replace_content_with<T: ToString>(&mut self, what: T) {
@@ -62,8 +63,9 @@ impl StringBuilder {
         self.data.clear();
     }
     /// Push a single character to the buffer
-    pub fn push(&mut self, ch: char) {
+    pub fn push(&mut self, ch: char) -> &mut Self {
         self.data.push(ch);
+        self
     }
 }
 

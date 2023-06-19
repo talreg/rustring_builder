@@ -1,4 +1,4 @@
-use string_builder::StringBuilder;
+use rustring_builder::StringBuilder;
 
 fn main(){
     let mut sample=StringBuilder::new();
@@ -20,6 +20,13 @@ fn main(){
     sample2=StringBuilder::new_with_value("Hello world");
     sample2.push('!');
     println!("{}",sample2.to_string()); // Hello world!
+    // chaining append
+    sample2.clear();
+    sample2.append("good")
+        .append("bye")
+        .append(" world")
+        .append("!");
+    println!("{}",sample2.to_string()); // goodbye world!
 
 
 }

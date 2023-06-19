@@ -1,4 +1,4 @@
-use string_builder::StringBuilder;
+use rustring_builder::StringBuilder;
 
 #[test]
 fn test_create(){
