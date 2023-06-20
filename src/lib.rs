@@ -6,7 +6,6 @@ pub struct StringBuilder {
     data: Vec<char>,
     iterator_ptr: usize,
 }
-
 impl StringBuilder {
     pub fn new_line(&mut self) {
         self.append("\n");
@@ -21,6 +20,27 @@ impl StringBuilder {
         let mut sb = StringBuilder::new();
         sb.append(value);
         sb
+    }
+    #[doc = include_str!("../readmes/insert_at.md")]
+    pub fn insert_at(&mut self, insert_position: i32, insertion_text: &str) {
+        self.insert_at_with_len(insert_position, insertion_text, insertion_text.len() as i32);
+    }
+    #[doc = include_str!("../readmes/insert_at_len.md")]
+    pub fn insert_at_with_len(&mut self, insert_position: i32, insertion_text: &str, data_length: i32) {
+        let mut result = String::new();
+        let mut self_data_idx = 0;
+        let mut insertion_idx = 0;
+        for ch in self.data.iter() {
+            if self_data_idx == insert_position as usize {
+                while insertion_idx < data_length as usize {
+                    result.push(insertion_text.chars().nth(insertion_idx).unwrap());
+                    insertion_idx += 1;
+                }
+            }
+            result.push(*ch);
+            self_data_idx += 1;
+        }
+        self.data = result.chars().collect();
     }
     #[doc = include_str!("../readmes/append.md")]
     pub fn append<T: ToString>(&mut self, what: T) -> &mut Self {
@@ -108,7 +128,7 @@ impl Clone for StringBuilder {
 impl Iterator for StringBuilder {
     type Item = char;
     fn next(&mut self) -> Option<Self::Item> {
-        let mut result = Option::None;
+        let mut result = None;
         if self.iterator_ptr < self.data.len() {
             result = Some(self.data[self.iterator_ptr]);
             self.iterator_ptr += 1;
@@ -117,7 +137,7 @@ impl Iterator for StringBuilder {
     }
     fn nth(&mut self, n: usize) -> Option<Self::Item> {
         if n < self.data.len() {
-            return Option::Some(self.data[n]);
+            return Some(self.data[n]);
         }
         None
     }

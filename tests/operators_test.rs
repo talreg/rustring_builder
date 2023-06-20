@@ -6,6 +6,6 @@ fn test_concat_two_string_builders_into_a_third(){
     sample.append("hello world");
     let mut sample2=StringBuilder::new();
     sample2.append(" goodbye world");
-    let mut sample3=sample+sample2;
+    let sample3=sample+sample2;
     assert_eq!("hello world goodbye world",sample3.to_string());
 }
