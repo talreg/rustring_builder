@@ -20,10 +20,10 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: echo
-                  name: echo
+                  identifier: build_program
+                  name: build_program
                   spec:
-                    command: echo hello world
+                    command: cargo build
                   timeout: ""
                   type: Run
           platform:
